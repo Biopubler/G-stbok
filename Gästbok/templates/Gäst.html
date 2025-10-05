@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    
+    <body>
+        
+        <h1>Tor's Flask Guestbook</h1>
+        <p>Denna enkla sida används som exempel i några av mina kurser. Jag försöker moderera den och fixa buggar/sårbarheter ibland när jag har tid, men tar inget ansvar för innehållet. En kommentar får vara max 200 tecken. Försök att visa hänsyn och skriv inget som andra inte skulle vilja läsa. Tack för omtanken och lycka till med lärandet!</p>
+        
+        <form action="/submit" method="post" enctype="multipart/form-data">
+            
+            Name: <input type="text" name="name" id="name"><br>
+            <p><input type = "submit" value = "submit" /></p>
+            <br>
+            Email: <input type="text" name="email" id="email"><br>
+            <br>
+            Homepage: <input type="text" name="homepage" id="homepage"><br>
+            <br>
+            tel: <input type="text" name="tel" id="tel"><br>
+            <br>
+            Comment: <textarea name="comment" id="comment" rows="4" cols="50" style="vertical-align:top"></textarea><br>
+            <br>
+            
+            <input type="submit" value="Lägg till" name="submit">
+            
+        </form>
+        
+        <br>
+        
+
+
+    </body>
