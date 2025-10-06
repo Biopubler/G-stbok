@@ -10,9 +10,22 @@ def index():
 
 @app.route("/submit", methods=['POST', 'GET'])
 def submit():
-    print('funkar?')
+    name = request.form.get("name")
+    email = request.form.get("email")
+    homepage = request.form.get("homepage")
+    tel =  request.form.get("tel")
+    comment = request.form.get("comment")
+    print(f"Namn: {name}")
+    print(f"Email: {email}")
+    print(f"Homepage: {homepage}")
+    print(f"Tel: {tel}")
+    print(f"Comment: {comment}")
+
+    print(f'funkar {name} ?')
     # här skriver du kod som hanterar det su skickar med formuläret
     return "Under construction..."
+
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0') # filerna servas via din IP-adress i det lokala nätverket
@@ -32,11 +45,6 @@ if __name__ == "__main__":
 #         return "Fel vid filhantering:" + str(e)
 #     return f"Välkommen till sidan! Denna sida har laddats {str(number)} gånger."
 
-# @app.route("/submit", methods=['POST'])
-# def submit():
-#     print('funkar?')
-#    # här skriver du kod som hanterar det su skickar med formuläret
-#     return "Under construction..."
 
 # if __name__ == '__main__':
 #     app.run(debug=True, host='0.0.0.0') # filerna servas via din IP-adress i det lokala nätverket
