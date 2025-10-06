@@ -21,6 +21,10 @@ def submit():
     print(f"Tel: {tel}")
     print(f"Comment: {comment}")
 
+    with open("gäspbok", "a", encoding="utf-8") as f:
+      f.write(f"{name}|{email}|{homepage}|{tel}|{comment}\n")
+      f.write("---\n")
+
     print(f'funkar {name} ?')
     # här skriver du kod som hanterar det su skickar med formuläret
     return "Under construction..."
@@ -31,6 +35,9 @@ if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0') # filerna servas via din IP-adress i det lokala nätverket
 
 
+
+# Nedan var tydligen ett exempel :( 
+# Trodde det skulle vara den viktigaste delen.
 
 # @app.route("/")   RÖR INTE UNDER NÅGRA OMSTÄNDIGHETER! 
                 #Url till det = http://10.32.35.175:5000
