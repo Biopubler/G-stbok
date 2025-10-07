@@ -33,7 +33,7 @@
 {% if inlägg %}
     {% for rad in inlägg %}
         <div class="inlagg">
-            <p>{{ rad }}</p>
+            <p>{{ rad|replace("|", "<br>")|safe }}</p>
         </div>
     {% endfor %}
 {% else %}
