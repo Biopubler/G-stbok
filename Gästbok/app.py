@@ -1,12 +1,20 @@
 # Demonstrera filhantering genom en enkel besöksräknare
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
+from datetime import datetime
 
 app = Flask(__name__)
 FILE_PATH = "counter.txt" # lägg eventuellt till sökväg via undermapp vid behov
 
 @app.route("/") 
 def index():
-  return render_template("Gäst.html")
+    inlägg = []
+    try:  # ← FRÅN DEN BORTKOMMENTERADE KODEN
+        with open("counter.txt", "r", encoding="utf-8") as file:
+            inlägg = file.readlines()
+    except Exception as e:  # ← FRÅN DEN BORTKOMMENTERADE KODEN
+        print(f"Fel vid filhantering: {e}")
+    
+    return render_template("Gäst.html", inlägg=inlägg)
 
 @app.route("/submit", methods=['POST', 'GET'])
 def submit():
@@ -15,6 +23,9 @@ def submit():
     homepage = request.form.get("homepage")
     tel =  request.form.get("tel")
     comment = request.form.get("comment")
+
+    timestamp = datetime.now().strftime("%d/%m-%Y %H:%M")
+
     print(f"Namn: {name}")
     print(f"Email: {email}")
     print(f"Homepage: {homepage}")
@@ -27,7 +38,7 @@ def submit():
 
     print(f'funkar {name} ?')
     # här skriver du kod som hanterar det su skickar med formuläret
-    return (f"Hej...{name} |{email} | {homepage}  | {tel} | {comment}?") 
+    return (f"Hej...klockan är: {timestamp}| du är väl: {name} | {email} | {homepage}  | {tel} | {comment}?") 
 
 
 if __name__ == "__main__":
