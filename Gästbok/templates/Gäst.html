@@ -26,6 +26,19 @@
             <input type="submit" value="Lägg till" name="submit">
             
         </form>
+
+        
+<h2>Tidigare inlägg:</h2>
+
+{% if inlägg %}
+    {% for rad in inlägg %}
+        <div class="inlagg">
+            <p>{{ rad }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Inga inlägg ännu. Var först med att skriva något!</p>
+{% endif %}
         
         <br>
         

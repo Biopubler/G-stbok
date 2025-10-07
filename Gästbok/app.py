@@ -1,6 +1,7 @@
 # Demonstrera filhantering genom en enkel besöksräknare
 from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime
+# Create a CSV sample in memory
 
 app = Flask(__name__)
 FILE_PATH = "counter.txt" # lägg eventuellt till sökväg via undermapp vid behov
@@ -8,12 +9,12 @@ FILE_PATH = "counter.txt" # lägg eventuellt till sökväg via undermapp vid beh
 @app.route("/") 
 def index():
     inlägg = []
-    try:  # ← FRÅN DEN BORTKOMMENTERADE KODEN
-        with open("counter.txt", "r", encoding="utf-8") as file:
-            inlägg = file.readlines()
-    except Exception as e:  # ← FRÅN DEN BORTKOMMENTERADE KODEN
-        print(f"Fel vid filhantering: {e}")
-    
+    try:  
+             with open("counter.txt", "r", encoding="utf-8") as file:
+               inlägg = file.readlines()
+    except:
+        pass
+        
     return render_template("Gäst.html", inlägg=inlägg)
 
 @app.route("/submit", methods=['POST', 'GET'])
@@ -33,7 +34,7 @@ def submit():
     print(f"Comment: {comment}")
 
     with open("counter.txt", "a", encoding="utf-8") as f:
-      f.write(f"{name}|{email}|{homepage}|{tel}|{comment}\n")
+      f.write(f"{timestamp} |{name} |{email} |{homepage} |{tel} |{comment}\n")
       f.write("---\n")
 
     print(f'funkar {name} ?')
