@@ -21,14 +21,13 @@ def submit():
     print(f"Tel: {tel}")
     print(f"Comment: {comment}")
 
-    with open("gäspbok", "a", encoding="utf-8") as f:
+    with open("counter.txt", "a", encoding="utf-8") as f:
       f.write(f"{name}|{email}|{homepage}|{tel}|{comment}\n")
       f.write("---\n")
 
     print(f'funkar {name} ?')
     # här skriver du kod som hanterar det su skickar med formuläret
-    return "Under construction..."
-
+    return (f"Hej...{name} |{email} | {homepage}  | {tel} | {comment}?") 
 
 
 if __name__ == "__main__":
